@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+	</body>
+	<script>
+		var arr=[2,1,21,313,21,32,13,28,798,454,61,32,132,4,54654];
+		paixu(arr);
+        function paixu(arr){        	
+        	var len=arr.length;
+        	console.log(len);
+        	//拿到数组的长度，对这个数组进行遍历
+        	//冒泡排序的精髓在于用两个for循环组成一个动态对比相邻的两个数
+        	for(var i=0;i<len-1;i++){
+        		for(var j=0;j<len-1-i;j++){//13，12、11、10、9、8、7、6、5、4、3、2、1、0
+        			                     //j=0、1、2、3、4、5、6、7、8、9、10、11、12
+        			if(arr[j]>arr[j+1]){  //两位相邻的元素进行比较
+                      var temp=arr[j];//把前一位数保存起来
+                      arr[j]=arr[j+1];//让前一位等于后一位
+                      arr[j+1]=temp;//让后一位等于保存起来的前一位
+        			}
+        		}
+        		
+        	}
+        	console.log(arr);
+        }
+        //冒泡排序总结：思路就是把数组的相邻两位进行对比，如果前面比后面的元素大，则让他们位置调换，反之则不动
+        //实现形式：为了实现每对相邻的数进行比较，则需要设置两个for循环，第一个得到i,拿这个i实现对比过的数逐渐减少。
+	</script>
+
+</html>
