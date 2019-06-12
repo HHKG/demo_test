@@ -1,7 +1,8 @@
 $(document).ready(function() {
 	//根据图片循环出点数
 	var dots = '',
-		index = 0;
+		index = 0,
+		timer;
 	console.log($('.lunbo>ul>li').length);
 	for(var i = 0; i < $('.lunbo>ul>li').length; i++) {
 		dots += '<span></span>';
@@ -10,6 +11,7 @@ $(document).ready(function() {
 	//鼠标移入事件，获取span本身的索引
 	$('.dots span').on('mouseover', function() {
 		var index = $('.dots span').index(this);
+		clearInterval(timer);
 		light(index);
 		clacluate(index);
 		run(index);
@@ -32,8 +34,8 @@ $(document).ready(function() {
 		$('.dots span').eq(c).addClass('active');
 	}
 	//自动轮播
-	function run(b) {
-		var timer=setInterval(function() {
+	function run() {
+		timer=setInterval(function() {
 			index += 1;
 			if(index <= 4) {
 				if(index == 4) {
@@ -46,5 +48,12 @@ $(document).ready(function() {
 			
 		}, 2000);
 	}
-    //shu
+    //鼠标移入照片清除定时器
+    $('.lunbo ul li').on('mouseover',function(){
+    	clearInterval(timer);
+    })
+    //鼠标移走设置定时器
+    $('.lunbo ul li').on('mouseleave',function(){
+    	run();
+    })
 })
