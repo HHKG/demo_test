@@ -2,24 +2,22 @@ $(document).ready(function() {
 	//根据图片循环出点数
 	var dots = '',
 		index = 0,
+		clientW = $('.lunbo').width(),
 		timer;
-	console.log($('.lunbo>ul>li').length);
 	for(var i = 0; i < $('.lunbo>ul>li').length; i++) {
 		dots += '<span></span>';
 	}
 	$('.dots').html(dots);
 	//鼠标移入事件，获取span本身的索引
 	$('.dots span').on('mouseover', function() {
-		var index = $('.dots span').index(this);
+	    index = $('.dots span').index(this);
 		clearInterval(timer);
 		light(index);
 		clacluate(index);
-		run(index);
 	}).eq(0).trigger('mouseover');
 
 	//计算ul滑动的距离
 	function clacluate(a) {
-		var clientW = $('.lunbo').width(),
 			moveW = -a * clientW + 'px';
 		$('.lunbo ul').stop(true, false).animate({
 			'margin-left': moveW
@@ -45,15 +43,46 @@ $(document).ready(function() {
 				clacluate(index);
 				light(index);
 			}
-			
 		}, 2000);
 	}
-    //鼠标移入照片清除定时器
-    $('.lunbo ul li').on('mouseover',function(){
+	run();
+    //显示左边按钮
+    $('.jiantou_prev').on('mouseover',function(){
+    	$('.prev').fadeIn();
     	clearInterval(timer);
     })
-    //鼠标移走设置定时器
-    $('.lunbo ul li').on('mouseleave',function(){
+    //隐藏左边按钮
+        $('.jiantou_prev').on('mouseleave',function(){
+    	$('.prev').fadeOut();
     	run();
+    })
+    
+     //显示右边按钮
+    $('.jiantou_next').on('mouseover',function(){
+    	$('.next').fadeIn();
+    	clearInterval(timer);
+    })
+     //隐藏右边按钮
+    $('.jiantou_next').on('mouseleave',function(){
+    	$('.next').fadeOut();
+    	run();
+    })
+    //点击事件
+    $('.prev').click(function(){
+    	index-=1;
+    	if(index==-1){
+    		index=3;//赋值用一个等号，判断用两个等号，标准使用三个等号
+    	}
+    	light(index);
+		clacluate(index);
+    });
+      //点击事件
+    $('.next').click(function(){
+    	index+=1;
+    	if(index==4){
+    		index=0;
+    	}
+    	light(index);
+		clacluate(index);
     })
 })
