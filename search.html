@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>切换搜索类型功能</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<script>
+			(function(doc, win) {
+				var docEl = doc.documentElement,
+					resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+					recalc = function() {
+						var clientWidth = docEl.clientWidth;
+						console.log(10 * (clientWidth / 640));
+						if(!clientWidth) return;
+						if(clientWidth >= 640) {
+							//							docEl.style.fontSize = '50px';
+							docEl.style.fontSize = 100 * (clientWidth / 640) + 'px';
+						} else {
+							docEl.style.fontSize = 100 * (clientWidth / 640) + 'px';
+						}
+					};
+				if(!doc.addEventListener) return;
+				win.addEventListener(resizeEvt, recalc, false);
+				doc.addEventListener('DOMContentLoaded', recalc, false);
+			})(document, window);
+			//1rem=100px;
+		</script>
+	</head>
+	<style type="text/css">
+		.search {
+			width: 100%;
+			height: 2rem;
+			background-color: #0583FB;
+			color: #fff;
+			display: inline-block;
+		}
+		
+		ul,
+		li {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			color: rgb(255,255,255,0.9);
+			font-size: 0.32rem;
+			line-height: 0.32rem;
+			white-space: nowrap;
+		}
+		.search li{
+			height:0.5rem;
+			padding-bottom:0.1rem;
+		}
+		.search ul {
+			width:100%;
+			height:0.5rem;
+			margin:0.3rem 0;
+			display: flex;
+			-webkit-justify-content: space-around;
+			-webkit-align-items: center;
+		}
+		.search ul .active{
+			color: #fff;
+			border-bottom:0.05rem solid #fff;
+		}
+		.input{
+			margin-top:0.6rem;
+			height:0.6rem!important;
+            width:6.4rem!important;
+			margin:0 auto;
+			background: rgb(255,255,255,0.5);
+			font-size: 0.28rem;
+			text-align: start!important;
+		}
+		.input:before{
+			content: '121212';
+			clear: both;
+			display: inline-block;
+			width:0.2rem;
+			height:0.2rem;
+			background-color:red;
+		}
+         .input::placeholder{
+         	color:#fff;
+         	font-size:0.28rem;
+         	line-height: 0.6rem;
+         	text-align: start;
+         }
+	</style>
+	<body>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript" src="js/jquery3-4-1.js" ></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+		<div class="search">
+			<ul>
+				<li class="active">查公司</li>
+				<li>查老板</li>
+				<li>查关系</li>
+			</ul>
+			<input class="input" type="search" placeholder="请输入公司名称" value="" name="" />
+		</div>
+		<script type="text/javascript">
+			$(document).ready(()=>{
+				var arr=[{name:'请输入公司名称',title:'海雅百货'},{name:'请输入老板名字',title:'黄晓明'},{name:'输入公司名称或老板名字',title:'阿里巴巴-马云'}]
+				$('.search ul li').click(function(){
+					var index=$(this).index();
+					for(var i=0;i<$('.search ul li').length;i++){
+						$('.search ul li').removeClass('active');
+					}
+                  $(this).addClass('active');
+                  $('.input').val(arr[index].name);
+				})
+			})
+		</script>
+	</body>
+
+</html>

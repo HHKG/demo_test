@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="UTF-8">
-		<title></title>
+		<title>冒泡排序</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="css/mui.min.css" rel="stylesheet" />
 	</head>
@@ -15,27 +15,61 @@
 		</script>
 	</body>
 	<script>
-		var arr=[2,1,21,313,21,32,13,28,798,454,61,32,132,4,54654];
+		var arr = [2, 1, 21, 313, 21, 32, 13, 28, 798, 454, 61, 32, 132, 4, 54654];
 		paixu(arr);
-        function paixu(arr){        	
-        	var len=arr.length;
-        	console.log(len);
-        	//拿到数组的长度，对这个数组进行遍历
-        	//冒泡排序的精髓在于用两个for循环组成一个动态对比相邻的两个数
-        	for(var i=0;i<len-1;i++){
-        		for(var j=0;j<len-1-i;j++){//13，12、11、10、9、8、7、6、5、4、3、2、1、0
-        			                     //j=0、1、2、3、4、5、6、7、8、9、10、11、12
-        			if(arr[j]>arr[j+1]){  //两位相邻的元素进行比较
-                      var temp=arr[j];//把前一位数保存起来
-                      arr[j]=arr[j+1];//让前一位等于后一位
-                      arr[j+1]=temp;//让后一位等于保存起来的前一位
-        			}
-        		}
-        	}
-        	console.log(arr);
-        }
-        //冒泡排序总结：思路就是把数组的相邻两位进行对比，如果前面比后面的元素大，则让他们位置调换，反之则不动
-        //实现形式：为了实现每对相邻的数进行比较，则需要设置两个for循环，第一个得到i,拿这个i实现对比过的数逐渐减少。
+
+		function paixu(arr) {
+			var len = arr.length;
+			console.log(len);
+			//拿到数组的长度，对这个数组进行遍历
+			//冒泡排序的精髓在于用两个for循环组成一个动态对比相邻的两个数
+			for(var i = 0; i < len - 1; i++) {
+				for(var j = 0; j < len - 1 - i; j++) { //13，12、11、10、9、8、7、6、5、4、3、2、1、0
+					//j=0、1、2、3、4、5、6、7、8、9、10、11、12
+					if(arr[j] > arr[j + 1]) { //两位相邻的元素进行比较
+						var temp = arr[j]; //把前一位数保存起来
+						arr[j] = arr[j + 1]; //让前一位等于后一位
+						arr[j + 1] = temp; //让后一位等于保存起来的前一位
+					}
+				}
+			}
+			console.log(arr);
+		}
+		//冒泡排序总结：思路就是把数组的相邻两位进行对比，如果前面比后面的元素大，则让他们位置调换，反之则不动
+		//实现形式：为了实现每对相邻的数进行比较，则需要设置两个for循环，第一个得到i,拿这个i实现对比过的数逐渐减少。
+		//      var myMap=new Map();
+		//      myMap.set(0,'zero');
+		//      myMap.set(1,'one');
+
+		var myMap = new Map();
+		myMap.set(0, 'zero');
+		myMap.set(1, 'one');
+		//      for(var [key,value] of myMap){
+		//      	console.log(key+'='+ value);
+		//      }
+		//      for(var [key,value] of myMap.entries()){
+		//      	console.log(key+'='+ value);
+		//      }
+		//      for(var key of myMap.keys()){
+		//      	console.log(key);
+		//      }
+		//      for(var value of myMap.values()){
+		//      	console.log(value);
+		//      }
+		//      myMap.forEach(function(value,key){
+		//          console.log(key+'='+value);
+		//      },myMap);
+		var kvArray = [
+			["key1", "value1"],
+			["key2", "value2"]
+		];
+
+		// Map 构造函数可以将一个 二维 键值对数组转换成一个 Map 对象
+		var myMap = new Map(kvArray);
+        console.log(kvArray);
+		// 使用 Array.from 函数可以将一个 Map 对象转换成一个二维键值对数组
+		var outArray = Array.from(myMap);
+		console.log(outArray);
 	</script>
 
 </html>
