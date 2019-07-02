@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>animate</title>
+	</head>
+	<style type="text/css">
+	#animate{
+	width:100px;
+	height:100px;
+	background-color:red;
+	color:#fff;
+	position:fixed;
+	text-align: center;
+	line-height: 100px;
+	}	
+	</style>
+	<body>
+		<div id="animate" style="left: 50px;top:50px">animate</div>
+		<script>
+			function addLoadElement(ftnc){
+				let oldLoad=window.onload;
+				if(window.onload!='function'){
+					window.onload=ftnc;
+				}else{
+					window.onload=function(){
+						oldLoad();
+						ftnc();
+					}
+				}
+			}
+
+			function animate(long,interval){
+				let id=document.getElementById('animate'),
+				Timer=setTimeout('animate(300,2)',interval),
+				    ox=parseInt(id.style.left),
+				    oy=parseInt(id.style.top);
+				    if(ox<long){
+				    	ox++;
+				    	id.style.left=ox+'px';
+				    }
+				    if(oy<long){
+				    	oy++;
+				    	id.style.top=oy+'px';
+				    }
+				    if(ox==long||oy==long){
+				    	clearTimeout(Timer);
+				    }
+			}
+			addLoadElement(animate(300,2));
+		</script>
+	</body>
+</html>

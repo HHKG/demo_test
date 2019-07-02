@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+	</head>
+	<style>
+		.borderImg {
+			width: 200px;
+			height: 200px;
+			border: 20px solid;
+			border-image-source: url(images/card-01.png);
+			/* border-image-slice: value; 没有单位的数值*/
+			border-image-slice: 27;
+			/* border-image-repeat 是否平铺
+                取值：repeat 平铺不拉伸
+                round 平铺又拉伸
+                stretched 拉伸不平铺
+             */
+			border-image-repeat: round;
+		}
+		.txt{
+			direction:rtl;
+			unicode-bidi:bidi-override;
+		}
+	</style>
+
+	<body>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+		<div class="borderImg"></div>
+		<div style="border:1px solid red;width:100px;text-overflow: ellipsis;overflow: hidden;white-space:nowrap;">jsahdkjahskjdhasjdajskhdajshdjhdajshdjhajfdlkfhakdjfhdjfhsdufasjehfsjkdfhsdjfiufsfhsdfnmbsdhfsdfhskjdh</div>
+	    <div class="txt">我是聊得来的快点快点打快点快点空空荡荡快点快点快点看你</div>
+	    <div style="width:100px;height:100px;background:red;border:1px solid black;padding:10px; background-origin: padding-box;">
+	    	<div style="width:80px;height:80px;background-color: #000000;">
+	    		
+	    	</div>
+	    </div>
+	</body>
+<!--unicode-bidi:bidi-override-->
+</html>
